@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Drift Simulator</title> 
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+     background: url('https://media.giphy.com/media/xUOwGcu6wd0cXBj5n2/giphy.gif') no-repeat center center fixed;
+      background-size: 150% 150%;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+      perspective: 1px;
+      transform-style: preserve-3d;
+    }
+    #stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      z-index: -1;
+      animation: scrollStars 60s linear infinite;
+    }
+    @keyframes scrollStars {
+      from { background-position: 0 0; }
+      to { background-position: 0 1000px; }
+    }
+    header {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      text-align: center;
+      background: linear-gradient(90deg, #ff00cc, #00ffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 5s infinite alternate, pulse 2s infinite ease-in-out;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.85; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    iframe {
+      width: 90%;
+      height: calc(90vh - 50px);
+      margin: 0 auto;
+      display: block;
+      border: 4px solid transparent;
+      border-radius: 20px;
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-image: linear-gradient(#000, #000), linear-gradient(90deg, #ff00cc, #00ffff);
+      animation: pulseBorderColor 5s infinite alternate, sparkle 3s linear infinite;
+      box-shadow: 0 0 15px #ff00cc, 0 0 30px #00ffff;
+    }
+    @keyframes pulseBorderColor {
+      0% {
+        background-image: linear-gradient(#000, #000), linear-gradient(90deg, #ff00cc, #00ffff);
+      }
+      50% {
+        background-image: linear-gradient(#000, #000), linear-gradient(90deg, #ff66ff, #66ffff);
+      }
+      100% {
+        background-image: linear-gradient(#000, #000), linear-gradient(90deg, #ff00cc, #00ffff);
+      }
+    }
+    @keyframes sparkle {
+      0%, 100% {
+        box-shadow: 0 0 10px #fff, 0 0 20px #ff00cc, 0 0 30px #00ffff;
+      }
+      50% {
+        box-shadow: 0 0 20px #fff, 0 0 30px #ff00cc, 0 0 40px #00ffff;
+      }
+    }
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #ccc;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="stars"></div>
+  <header>3D Physics Simulation Portal</header>
+  <iframe id="gameFrame" src="https://slopegame.io/game/slope-3" frameborder="0" allowfullscreen></iframe>
+  <footer>© 2025 School Project Resources</footer>
+</body>
+</html>
